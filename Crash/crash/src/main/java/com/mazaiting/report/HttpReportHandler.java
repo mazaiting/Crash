@@ -32,7 +32,7 @@ public class HttpReportHandler extends AbstractCrashReportHandler {
     this.url = url;
     return this;
   }
-  @Override void sendReport(String title, String body, File file) {
+  @Override protected void sendReport(String title, String body, File file) {
     if (TextUtils.isEmpty(url)){
       throw new RuntimeException("Please set your net url!");
     }
