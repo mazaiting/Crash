@@ -78,7 +78,7 @@ public class EmailReportHandler extends AbstractCrashReportHandler {
     return this;
   }
 
-  @Override void sendReport(final String title, final String body, final File file) {
+  @Override protected void sendReport(final String title, final String body, final File file) {
     if (TextUtils.isEmpty(passWord)){
       throw new RuntimeException("Please set your email password!");
     }
