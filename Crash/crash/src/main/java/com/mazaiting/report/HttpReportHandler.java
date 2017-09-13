@@ -24,8 +24,6 @@ import java.io.File;
 public class HttpReportHandler extends AbstractCrashReportHandler {
   /**服务器地址链接*/
   private String url;
-  /**文件字段名*/
-  private String key;
   public HttpReportHandler(Context context) {
     super(context);
   }
@@ -34,21 +32,15 @@ public class HttpReportHandler extends AbstractCrashReportHandler {
     this.url = url;
     return this;
   }
-
-  public HttpReportHandler setKey(String key) {
-    this.key = key;
-    return this;
-  }
-
   @Override void sendReport(String title, String body, File file) {
-    if (TextUtils.isEmpty(url) || TextUtils.isEmpty(key)){
-      return;
+    if (TextUtils.isEmpty(url)){
+      throw new RuntimeException("Please set your net url!");
     }
     AsyncHttpPost post = new AsyncHttpPost(url);
     MultipartFormDataBody multipartFormDataBody = new MultipartFormDataBody();
     multipartFormDataBody.addStringPart("title", title);
     multipartFormDataBody.addStringPart("body",body);
-    multipartFormDataBody.addFilePart(key, file);
+    multipartFormDataBody.addFilePart("file", file);
     post.setBody(multipartFormDataBody);
     AsyncHttpClient.getDefaultInstance().executeString(post, new AsyncHttpClient.StringCallback(){
       @Override

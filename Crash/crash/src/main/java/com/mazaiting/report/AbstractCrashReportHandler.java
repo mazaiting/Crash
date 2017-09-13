@@ -14,12 +14,12 @@ import java.io.File;
  * Created by mazaiting on 2017/9/12.
  */
 
-abstract class AbstractCrashReportHandler implements CrashListener {
+public abstract class AbstractCrashReportHandler implements CrashListener {
   // 设备上下文
   private Context mContext;
   private File mFile;
 
-  AbstractCrashReportHandler(Context context) {
+  protected AbstractCrashReportHandler(Context context) {
     this.mContext = context;
     CrashHandler handler = CrashHandler.getInstance();
     getFileDir(context);
@@ -49,7 +49,7 @@ abstract class AbstractCrashReportHandler implements CrashListener {
    * @param body 内容
    * @param file 文件
    */
-  abstract void sendReport(String title, String body, File file);
+  protected abstract void sendReport(String title, String body, File file);
 
   /**
    * 构建标题

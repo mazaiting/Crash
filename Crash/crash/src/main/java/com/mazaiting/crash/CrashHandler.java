@@ -2,6 +2,7 @@ package com.mazaiting.crash;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import com.mazaiting.util.CrashLogUtil;
 import java.io.File;
 import java.lang.Thread.UncaughtExceptionHandler;
@@ -25,6 +26,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
   private File mExceptionFile = null;
 
   @Override public void uncaughtException(Thread thread, Throwable throwable) {
+    Log.e("TAG", throwable.getMessage());
     CrashLogUtil.writeFile(mExceptionFile, throwable);
     // 线程池执行任务
     THREAD_POOL.execute(new Runnable() {

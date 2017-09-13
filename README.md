@@ -47,4 +47,28 @@ public class MyApplication extends Application{
 其中可以获取到字段"title", "body", "file", "title"是标题, "body"是内容,
 "file"是错误日志内容。
 
+如果这两个类无法满足你的需求，你也可以自定义一个MyHandler, 并继承AbstractCrashReportHandler,
+实现它的构造方法与sendReport(String title, String body, File file)方法。其中title是标题,
+body是内容, file是错误日志文件。
+```
+public class MyHandler extends AbstractCrashReportHandler {
+  MyHandler(Context context) {
+    super(context);
+  }
+
+  @Override protected void sendReport(String title, String body, File file) {
+
+  }
+}
+
+// 并在Application中初始化
+public class MyApplication extends Application{
+
+  @Override public void onCreate() {
+    super.onCreate();
+    new MyHandler(this);
+  }
+}
+```
+
 文章地址(http://www.jianshu.com/p/d7d3c8fbeeb2)
