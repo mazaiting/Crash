@@ -26,7 +26,7 @@ dependencies {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
   testCompile 'junit:junit:4.12'
-//  compile project(path: ':mail')
   compile 'com.mazaiting:mail:1.0.0'
   compile 'com.koushikdutta.async:androidasync:2.2.1'
+
 }
