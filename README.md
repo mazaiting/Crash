@@ -34,18 +34,17 @@ public class MyApplication extends Application{
 }
 ```
 
-当然你也可以使用自己的服务器来获取日志文件, 在主Application中初始化
+当然你也可以将日志文件存储在本地, 在主Application中初始化
 ```
 public class MyApplication extends Application{
 
   @Override public void onCreate() {
     super.onCreate();
-    new HttpReportHandler(this).setUrl("网络链接");
+    // 文件默认路径: /data/data/应用包名/files/crash.log
+    new LocalReportHandler(this);
   }
 }
 ```
-其中可以获取到字段"title", "body", "file", "title"是标题, "body"是内容,
-"file"是错误日志内容。
 
 如果这两个类无法满足你的需求，你也可以自定义一个MyHandler, 并继承AbstractCrashReportHandler,
 实现它的构造方法与sendReport(String title, String body, File file)方法。其中title是标题,

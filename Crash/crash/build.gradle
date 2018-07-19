@@ -1,11 +1,11 @@
 apply plugin: 'com.android.library'
 
 android {
-  compileSdkVersion project.compileSdkVersion
+  compileSdkVersion 27
 
   defaultConfig {
-    minSdkVersion project.minSdkVersion
-    targetSdkVersion project.targetSdkVersion
+    minSdkVersion 16
+    targetSdkVersion 27
     versionCode 1
     versionName "1.0.3"
 
@@ -23,6 +23,7 @@ dependencies {
   compile fileTree(include: ['*.jar'], dir: 'libs')
   // 右键
   compile 'com.mazaiting:mail:1.0.1'
-  // 日志打印
-  compile 'com.orhanobut:logger:2.2.0'
 }
+
+
+// apply from: "./../jcenter.gradle"

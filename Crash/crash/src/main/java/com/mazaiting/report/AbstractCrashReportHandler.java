@@ -19,7 +19,7 @@ public abstract class AbstractCrashReportHandler implements CrashListener {
   private Context mContext;
   private File mFile;
 
-  protected AbstractCrashReportHandler(Context context) {
+  AbstractCrashReportHandler(Context context) {
     this.mContext = context;
     CrashHandler handler = CrashHandler.getInstance();
     getFileDir(context);
@@ -30,7 +30,6 @@ public abstract class AbstractCrashReportHandler implements CrashListener {
   /**
    * 获取文件路径
    * @param context 设备上下文
-   * @return 返回文件
    */
   private void getFileDir(Context context) {
     mFile = new File(context.getFilesDir(), "crash.log");
