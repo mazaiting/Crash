@@ -3,10 +3,12 @@
 buildscript {
   repositories {
     jcenter()
-    google()
+    maven {
+      url 'https://maven.aliyun.com/repository/public'
+    }
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.0.0'
+    classpath 'com.android.tools.build:gradle:3.0.1'
     classpath 'com.novoda:bintray-release:0.5.0'
 
     // NOTE: Do not place your application dependencies here; they belong
@@ -18,11 +20,14 @@ allprojects {
   repositories {
     jcenter()
 //    maven(){url 'https://dl.bintray.com/mazaiting/Test'}
-    google()
+    maven {
+      url 'https://maven.aliyun.com/repository/public'
+    }
   }
   //加上这些
   tasks.withType(Javadoc) {
-    options{ encoding "UTF-8"
+    options{
+      encoding "UTF-8"
       charSet 'UTF-8'
       links "http://docs.oracle.com/javase/7/docs/api"
     }
@@ -34,9 +39,9 @@ task clean(type: Delete) {
 }
 
 ext {
-  compileSdkVersion = 27
-  minSdkVersion = 19
-  targetSdkVersion = 27
-  versionName = '1.0'
-  supportVersion = '27.1.0'
+  compileSdkVersion = 28
+  minSdkVersion = 16
+  targetSdkVersion = 28
+  versionName = '1.0.4'
+  supportVersion = '28.0.0-alpha1'
 }
