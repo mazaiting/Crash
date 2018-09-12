@@ -12,5 +12,4 @@ public interface CrashListener {
    * @param file 异常文件
    */
   void saveCrash(File file);
-
 }

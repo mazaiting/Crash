@@ -8,40 +8,39 @@ import android.os.Build;
 import com.mazaiting.crash.CrashHandler;
 import com.mazaiting.crash.CrashListener;
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 /**
  * 异常获取抽象类
  * Created by mazaiting on 2017/9/12.
  */
 
-public abstract class AbstractCrashReportHandler implements CrashListener {
-  // 设备上下文
-  private Context mContext;
-  private File mFile;
-
+public abstract class AbstractCrashReportHandler {
+  
   public AbstractCrashReportHandler(Context context) {
-    this.mContext = context;
-    CrashHandler handler = CrashHandler.getInstance();
-    getFileDir(context);
-    handler.init(mFile, this);
-    Thread.setDefaultUncaughtExceptionHandler(handler);
+    handlerInit(context);
   }
-
+  
   /**
-   * 获取文件路径
+   * 初始化CrashHandler
    * @param context 设备上下文
    */
-  private void getFileDir(Context context) {
-    mFile = new File(context.getExternalCacheDir(), "crash.log");
+  private void handlerInit(final Context context) {
+    CrashHandler handler = CrashHandler.getInstance();
+    // 异常监听
+    CrashListener crashListener = new CrashListener() {
+      @Override
+      public void saveCrash(File file) {
+        sendReport(buildTitle(context), buildBody(context), file);
+      }
+    };
+    handler.init(new File(context.getExternalCacheDir(),
+            new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA)
+                    .format(System.currentTimeMillis()) + ".log"), crashListener);
+    Thread.setDefaultUncaughtExceptionHandler(handler);
   }
-
-  /**
-   * 保存文件
-   */
-  @Override public void saveCrash(File file) {
-    sendReport(buildTitle(mContext), buildBody(mContext), file);
-  }
-
+  
   /**
    * 发送报告
    * @param title 标题

@@ -29,5 +29,5 @@ dependencies {
   compile "com.android.support:appcompat-v7:$supportVersion"
   testCompile 'junit:junit:4.12'
   compile project(path: ':crash')
-//  compile 'com.mazaiting:crash:1.0.3'
+//  compile 'com.mazaiting:crash:1.0.4'
 }

@@ -1,7 +1,7 @@
 package com.mazaiting.crash2;
 
 import android.app.Application;
-import com.mazaiting.report.EmailReportHandler;
+
 import com.mazaiting.report.LocalReportHandler;
 
 /**

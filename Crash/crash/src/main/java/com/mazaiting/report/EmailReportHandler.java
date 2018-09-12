@@ -1,11 +1,8 @@
 package com.mazaiting.report;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.mazaiting.MailBuilder;
 
@@ -136,7 +133,7 @@ public class EmailReportHandler extends AbstractCrashReportHandler {
       Log.e(TAG, "Please set your to Address!");
       return;
     }
-    ArrayList<File> files = new ArrayList<File>();
+    ArrayList<File> files = new ArrayList<>();
     files.add(file);
     new MailBuilder()
             .setServerHost(serverHost)// 设置服务器主机

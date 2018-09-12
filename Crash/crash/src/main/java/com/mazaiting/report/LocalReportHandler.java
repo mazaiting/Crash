@@ -25,7 +25,7 @@ public class LocalReportHandler extends AbstractCrashReportHandler {
       Log.d("Crash title: ", title);
     }
     if (!TextUtils.isEmpty(body)){
-      Log.d("Crash title: ", body);
+      Log.d("Crash body: ", body);
     }
     if (null != file){
       FileInputStream fis = null;
@@ -33,12 +33,12 @@ public class LocalReportHandler extends AbstractCrashReportHandler {
       try {
         fis =  new FileInputStream(file);
         os = new ByteArrayOutputStream();
-        int len = 0;
+        int len;
         byte[] bytes = new byte[1024];
         while ((len = fis.read(bytes)) != -1){
           os.write(bytes, 0, len);
         }
-        Log.d("Crash title: ", os.toString());
+        Log.d("Crash message: ", os.toString());
       } catch (Exception e) {
         e.printStackTrace();
       } finally {
