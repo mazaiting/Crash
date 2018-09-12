@@ -15,3 +15,5 @@ publish {
   desc = 'This is a Global Exception Capture library.'//d项目描述
   website = 'https://github.com/mazaiting/Crash' //github 托管地址
 }
+
+// gradlew clean build bintrayUpload -PbintrayUser=BINTRAY_USERNAME -PbintrayKey=BINTRAY_KEY -PdryRun=false
