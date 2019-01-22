@@ -8,7 +8,7 @@ android {
 
 publish {
   repoName="Test"//仓库名(repoName 如果没有填写，上传的库默认仓库是maven)
-  userOrg = ''      //bintray注册的用户名
+  userOrg = 'mazaiting'      //bintray注册的用户名
   groupId = 'com.mazaiting'     //compile引用时的第1部分groupId
   artifactId = 'crash'     //compile引用时的第2部分项目名
   publishVersion = project.versionName    //compile引用时的第3部分版本号
